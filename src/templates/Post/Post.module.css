@@ -1,0 +1,118 @@
+.article {
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+.grid {
+  display: block;
+  width: 90%;
+  margin: 5% auto;
+  padding: 0 2%;
+}
+.header {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.img {
+  width: 100%;
+  height: 50vh;
+}
+.title {
+  width: 100%;
+  font-size: 1.9rem;
+  text-transform: capitalize;
+}
+.date {
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.passage {
+  max-width: 90%;
+  margin: 0 auto 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 90%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+.left {
+  display: flex;
+  align-self: flex-start;
+}
+.right {
+  display: flex;
+  align-self: flex-end;
+}
+
+.button {
+  background: white;
+  position: relative;
+  display: inline-block;
+  color: #242121;
+  text-decoration: none;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 2;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  padding: 0.4rem 2rem;
+  overflow: hidden;
+  letter-spacing: 0.1rem;
+  min-width: 8rem;
+
+  border: 1px solid #242121;
+  outline: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #242121;
+  color: white;
+}
+.arrow {
+  font-weight: lighter;
+}
+.prev::before {
+  position: relative;
+  display: block;
+  content: 'PREVIOUS';
+  font-weight: bolder;
+}
+.next::before {
+  position: relative;
+  display: block;
+  content: 'NEXT';
+  font-weight: bolder;
+}
+
+@media only screen and (min-width: 1024px) {
+  .header {
+    max-width: 60%;
+  }
+  .passage {
+    max-width: 60%;
+  }
+  .title {
+    font-size: 2.9rem;
+  }
+  .nav {
+    flex-basis: 60%;
+    max-width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .article {
+    font-size: 1.2rem;
+  }
+}
