@@ -12,7 +12,7 @@ import 'katex/dist/katex.min.css';
 const BlogPost = ({ data, pageContext }) => {
   const post = data.markdownRemark;
   const { previous, next } = pageContext;
-  console.log(previous, next);
+  // console.log(previous, next);
   return (
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
