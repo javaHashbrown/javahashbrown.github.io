@@ -160,18 +160,14 @@ $ npm install moment --save
 
 我们再也不用手动下载 moment.js 了，可以使用 npm 自动下载和更新。打开`node_modules`文件夹，可以看到`moment.min.js`文件出现在`node_modules/moment/min`文件夹。这样就可以在`index.html`中链接下载好的`moment.min.js`版本：
 
-```html
+```html{7}
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>JavaScript Example</title>
-
-    --
     <script src="node_modules/moment/min/moment.min.js"></script>
-    --
-
     <script src="index.js"></script>
   </head>
   <body>
@@ -224,7 +220,8 @@ $ npm install webpack webpack-cli --save-dev
 
 注意安装的是 2 个包——webpack 和 webpack-cli（后者支持通过命令行使用 webpack）。再看 `--save-dev`参数——这个参数表示将安装包作为开发依赖保存，意思是安装包在开发环境中使用，但不会部署在生产服务器上。可以在`package.json`文件中看到，文件会自动更新：
 
-<pre>{
+```json{14-17}
+{
   "name": "modern-javascript-example",
   "version": "1.0.0",
   "description": "",
@@ -237,11 +234,12 @@ $ npm install webpack webpack-cli --save-dev
   "dependencies": {
     "moment": "^2.19.1"
   },
-  <b>"devDependencies": {
+  "devDependencies": {
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
-  }</b>
-}</pre>
+  }
+}
+```
 
 现在`node_modules`文件夹里安装好了 webpack 和 webpack-cli 包。你可以在命令行里使用 webpack-cli：
 
@@ -253,19 +251,18 @@ $ ./node_modules/.bin/webpack index.js --mode=development
 
 得到 webpack 的`dist/main.js`输出文件后，我们就可以在浏览器中用它取代`index.js`，因为后者还包含非法的 require 语句。这个过程也能在`index.html`文件中体现：
 
-```HTML
+```html{7}
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JavaScript Example</title>
-  <!-- 译注：以下script为引用 -->
-  <script src="dist/main.js"></script>--
-</head>
-<body>
-  <h1>Hello from HTML!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Example</title>
+    <script src="dist/main.js"></script>
+  </head>
+  <body>
+    <h1>Hello from HTML!</h1>
+  </body>
 </html>
 ```
 
@@ -311,7 +308,7 @@ $ npm install @babel/core @babel/preset-env babel-loader --save-dev
 
 注意，作为开发依赖，我们安装了 3 个独立的包——`@babel/core`是 babel 的主题，`@babel/preset-env`是预设，决定转换 JavaScript 的哪些新特性，而`babel-loader`是让 babel 能与 webpack 协同的包。可以编辑`webpack.config.js`来设置 webpack 使用`babel-loader`，方法如下：
 
-<pre>
+```javascript{9-22}
 // webpack.config.js
 module.exports = {
   mode: 'development',
@@ -320,7 +317,6 @@ module.exports = {
     filename: 'main.js',
     publicPath: 'dist'
   },
-  <b>
   module: {
     rules: [
       {
@@ -335,15 +331,14 @@ module.exports = {
       }
     ]
   }
-  </b>
 };
-</pre>
+```
 
 语法很不清晰（幸好我们不必经常修改）。基本上就是告诉 webpack 查找每个.js 文件（`node_modules`文件夹里的除外）并使用`babel-loader`通过`@babel/preset-env`的预设进行转换。[这里](http://webpack.github.io/docs/configuration.html)有更多关于 webpack 配置的内容。
 
 配置好了所有东西，现在可以用 ES2015 的语法写 JavaScript 了！下面是在`index.html`中使用 ES2015 [模板字符串(template string)](https://babeljs.io/learn-es2015/#ecmascript-2015-features-template-strings)语法的例子：
 
-```javascript
+```javascript{9-11}
 // index.js
 var moment = require('moment');
 console.log('Hello from JavaScript!');
@@ -352,7 +347,6 @@ console.log(
     .startOf('day')
     .fromNow()
 );
-/*译注：以下为template string*/
 var name = 'Bob',
   time = 'today';
 console.log(`Hello ${name}, how are you ${time}?`);
@@ -360,9 +354,8 @@ console.log(`Hello ${name}, how are you ${time}?`);
 
 还可以使用[ES2015 import](https://babeljs.io/learn-es2015/#ecmascript-2015-features-modules)语句代替`require`加载模块，这在目前的代码库中很常见。
 
-```javascript
+```javascript{2}
 // index.js
-/*译注：import语句*/
 import moment from 'moment';
 
 console.log('Hello from JavaScript!');
@@ -403,7 +396,7 @@ console.log('Hello ' + name + ', how are you ' + time + '?');
 
 写几个 npm 脚本，方便我们使用 webpack。只需要简单修改`package.json`文件：
 
-<pre>
+```json{8-9}
 {
   "name": "modern-javascript-example",
   "version": "1.0.0",
@@ -411,10 +404,8 @@ console.log('Hello ' + name + ', how are you ' + time + '?');
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    <b>
     "build": "webpack --progress --mode=production",
     "watch": "webpack --progress --watch"
-    </b>
   },
   "author": "",
   "license": "ISC",
@@ -428,7 +419,8 @@ console.log('Hello ' + name + ', how are you ' + time + '?');
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   }
-}</pre>
+}
+```
 
 我们增加了 2 个新脚本，`build`和`watch`。执行 build 脚本，可以在命令行输入：
 
@@ -452,7 +444,7 @@ $ npm install webpack-dev-server --save-dev
 
 随后在`package.json`中添加一条 npm 脚本：
 
-<pre>
+```json{10}
 {
   "name": "modern-javascript-example",
   "version": "1.0.0",
@@ -462,9 +454,7 @@ $ npm install webpack-dev-server --save-dev
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress -p",
     "watch": "webpack --progress --watch",
-    <b>
     "server": "webpack-dev-server --open"
-    </b>
   },
   "author": "",
   "license": "ISC",
@@ -478,7 +468,8 @@ $ npm install webpack-dev-server --save-dev
     "webpack": "^3.7.1",
     "webpack-dev-server": "^3.1.6"
   }
-}</pre>
+}
+```
 
 现在可以通过命令来启动开发服务器了：
 
