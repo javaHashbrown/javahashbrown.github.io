@@ -7,7 +7,7 @@ date: 2018-03-14
 `android:windowSoftInputMode="adjustResize"`可以让键盘推起页面  
 `android:windowSoftInputMode="adjustPan"`会遮住
 
-```xml
+```xml{5}
 <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

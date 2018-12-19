@@ -66,8 +66,8 @@ date: 2018-05-04
 
 - 创建对象的一个深拷贝，使它不受后续的影响， 比如把对象转成字符串再读取回来
 
-```JavaScript
-JSON.parse( JSON.stringify( object ) )
+```javascript
+JSON.parse(JSON.stringify(object));
 ```
 
 > ## 应验了一句老话，眼见也未必为实，今天体会很深

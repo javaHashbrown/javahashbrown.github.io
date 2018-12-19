@@ -19,26 +19,26 @@ date: 2018-10-07
 
 #### Array.prototype.forEach
 
-```JAVASCRIPT
-Array.prototype.simpleForEach = function(callback, thisArg){
+```javascript
+Array.prototype.simpleForEach = function(callback, thisArg) {
   var length = this.length;
-  for(var i=0;i<length;i++){
-    callback.call(thisArg,this[i],i,this);
+  for (var i = 0; i < length; i++) {
+    callback.call(thisArg, this[i], i, this);
   }
-}
+};
 ```
 
 #### Array.prototype.map
 
-```JAVASCRIPT
-Array.prototype.simpleMap = function(callback,thisArg){
+```javascript
+Array.prototype.simpleMap = function(callback, thisArg) {
   var newArr = [];
   var length = this.length;
-  for(var i=0;i<length;i++){
-    newArr.push(callback.call(thisArg,this[i],i,this));
+  for (var i = 0; i < length; i++) {
+    newArr.push(callback.call(thisArg, this[i], i, this));
   }
   return newArr;
-}
+};
 ```
 
 #### Array.prototype.filter

@@ -19,7 +19,7 @@ date: 2018-05-19
 
 在 FlatList 外层的容器里加上`{flex：1}`
 
-```JSX
+```jsx{1}
 <View style={{flex:1}}>
   <FlatList
     ...

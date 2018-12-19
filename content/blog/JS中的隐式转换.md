@@ -26,7 +26,7 @@ date: 2018-09-21
 >注：转换为Boolean为false的值有：`'', false, 0, NaN, undefined, null`  
 
 **例1**  
-```JavaScript
+```javascript
 Boolean('') //空字符串，0
 Boolean(' ') //含有一个空格的字符串，1
 ```
@@ -44,7 +44,7 @@ Boolean(' ') //含有一个空格的字符串，1
 | String    | 不转换                             |
 | Symbol    | 抛出`TypeError`异常                |
 **例2**  
-```JavaScript
+```javascript
 String(false) //'false'
 String(1.32e3) //'1320'
 String(-Infinity) //'-Infinity'
@@ -65,7 +65,7 @@ String(NaN) // 'NaN'
 | Symbol    | 抛出`TypeError`异常                                                                                                                                                                                                                                                                                                                                             |
 
 **例3**  
-```JavaScript
+```javascript
 Number('') //0
 Number('    ') //0
 Number(' -1.33e3 ') //-1330
@@ -87,7 +87,7 @@ Number(' 1232 4345') //NaN
 > 2.以上对象默认转换规则，如果对象重写了默认的`toString` 和/或 `valueOf`方法，致使无法返回基本类型，那么将抛出`TypeError`异常
 
 **例4**  
-```JavaScript
+```javascript
 let a = {};
 a+1 //'[object Object]1'
 a.toString() //'[object Object]'

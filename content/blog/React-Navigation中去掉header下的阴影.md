@@ -11,7 +11,7 @@ date: 2018-03-18
 
 代码
 
-```JSX
+```jsx
 //Android
 elevation：0
 //iOS

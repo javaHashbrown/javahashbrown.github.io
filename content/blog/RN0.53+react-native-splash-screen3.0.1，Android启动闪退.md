@@ -10,7 +10,7 @@ splash-screen 这个 RN 插件挺好用的，升级之后启动 Android 版 APP 
 
 1. MainActivity.java 修改为
 
-```java
+```java{3}
 SplashScreen.show(this);//原代码
 
 SplashScreen.show(this, true);//修改成这样
@@ -19,7 +19,7 @@ SplashScreen.show(this, true);//修改成这样
 2. 然后修改插件源代码
    在`node_modules> react-native-splash-screen> android> src> SplashScreen.java`
 
-```JAVA
+```java{3,4}
 //原代码，删掉
 mSplashDialog = new Dialog(activity, fullScreen ? R.style.SplashScreen_Fullscreen : R.style.SplashScreen_SplashTheme);
 //修改为下面的

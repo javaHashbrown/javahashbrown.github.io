@@ -31,7 +31,7 @@ date: 2018-10-22
 >2.函数也是对象的一种，但是所有浏览器都单独返回'function'的具体类型，而不仅仅是'object'
 
 因为例外1和2的存在，判断变量是否为对象时，至少要先检查变量是否为null以及变量是否为函数，否则会出错，比如下面这段代码就有bug：
-```Javascript
+```javascript
 let a = null;
 let b = ()=>{};
 function isObject(input){
@@ -45,7 +45,7 @@ isObject(a);//'I am an object!'
 isObject(b);//'I am not an object~'
 ```
 有2种方法可以修复这个bug，一种是增加判断，排除null，同时增加function的情况；还有一种是使用`Object()`方法进行类型转换。
-```Javascript
+```javascript
 //方法1
 function isObject(input){
   if(input !==null && 

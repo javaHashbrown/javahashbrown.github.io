@@ -13,7 +13,7 @@ date: 2018-10-03
 
 indexOf 和 includes 都可以用来判断数组是否包含某个元素，二者到底有什么区别呢？看一个例子:
 
-```JavaScript
+```javascript
 let a = [1,2,3,null,undefined,NaN];
 
 if(a.indexOf(NaN)!==-1){

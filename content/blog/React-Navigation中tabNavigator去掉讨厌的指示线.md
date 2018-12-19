@@ -6,7 +6,7 @@ date: 2018-03-12
 bottom 模式的 tabBar 也出现了 indicator（就是选中某个 tabbar icon 的时候，出现的那根线，一般是出现在 top 模式下的）
 感觉很烦人，想去掉，开始自然想到把这根线调为透明
 
-```jsx
+```javascript{3}
 tabBarOption: {
   indicatorStyle: {
     opacity: 0,
@@ -18,7 +18,7 @@ tabBarOption: {
 
 查了一下 issue，发现了下面这个解决方案：
 
-```JSX
+```javascript{9-11}
 export const AppNavigator = TabNavigator(
  {
     screenA:  screen1

@@ -12,17 +12,13 @@ StackNavigator 自带了 navigationOptions 属性，但必须以静态对象申�
 1. 在 DidMount 事件中配置 params 的闭包函数对象
 1. 页面跳转的执行函数
 
-```JSX
+```jsx{5,6,16-19}
 static navigationOptions = ({navigation}) => ({
       const {params} = navigation.state;
       title: 'PlayGround',
       headerRight: <View />,//之前提到过，占位的用的空view
       headerLeft:
-        <Button
-          //用闭包传递navigation
-          onPress={
-            params.handleNavigation && params.handleNavigation()}
-        />,
+        <Button onPress={params.handleNavigation && params.handleNavigation()} />,
       headerStyle: {
         backgroundColor: 'white',
       },

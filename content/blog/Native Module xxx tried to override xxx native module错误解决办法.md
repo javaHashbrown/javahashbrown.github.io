@@ -12,7 +12,7 @@ date: 2018-03-13
 这是`Project\android\app\src\main\java\com\project\MainApplication.java`里面多引用了一个同名模块导致，可能是手动添加了一遍后又自动加了一遍，
 删除掉多余的就好了
 
-```java
+```java{4,9}
  protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
