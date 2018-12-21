@@ -5,9 +5,3 @@
  */
 
 // You can delete this file if you're not using it
-// require('prismjs/themes/prism-okaidia.css');
-// require('./src/prism-styles.css');
-// exports.onClientEntry = () => {};
-exports.onServiceWorkerUpdateFound = () => {
-  console.log(`This application has been updated. `);
-};

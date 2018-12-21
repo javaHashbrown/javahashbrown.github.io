@@ -1,15 +1,15 @@
-import React from 'react';
-import Img from 'gatsby-image';
-import { graphql } from 'gatsby';
+import React from 'react'
+import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import PostPreview from '../components/PostPreview';
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import PostPreview from '../components/PostPreview'
 // eslint-disable-next-line
-import { fluidImageBg } from '../utils/ImageQuery';
+import { fluidImageBg } from '../utils/ImageQuery'
 
 const IndexPage = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark;
+  const { edges: posts } = data.allMarkdownRemark
   return (
     <Layout>
       <SEO title="Home" />
@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => {
             right: '0',
             width: '100%',
             margin: 'auto',
-            padding: '0 2rem'
+            padding: '0 2rem',
           }}
         >
           <div
@@ -35,14 +35,14 @@ const IndexPage = ({ data }) => {
               color: 'white',
               textTransform: 'uppercase',
               textShadow: '1px 1px 0 #011',
-              padding: '0 2rem'
+              padding: '0 2rem',
             }}
           >
             <h2
               style={{
                 textAlign: 'center',
                 fontWeight: 400,
-                letterSpacing: '0.2rem'
+                letterSpacing: '0.2rem',
               }}
             >
               Thoughts die but codes survive -
@@ -51,7 +51,7 @@ const IndexPage = ({ data }) => {
               style={{
                 textAlign: 'center',
                 color: '#d45c54',
-                letterSpacing: '0.1rem'
+                letterSpacing: '0.1rem',
               }}
             >
               welcom to alex's midway
@@ -63,18 +63,18 @@ const IndexPage = ({ data }) => {
         style={{
           margin: '0 auto',
           display: 'flex',
-          flexWrap: 'wrap'
+          flexWrap: 'wrap',
         }}
       >
         {posts.map(({ node: post }) => {
-          return <PostPreview key={post.id} node={post} />;
+          return <PostPreview key={post.id} node={post} />
         })}
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage
 
 export const pageQuery = graphql`
   query {
@@ -103,4 +103,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

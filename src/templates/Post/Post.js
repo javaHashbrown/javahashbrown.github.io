@@ -1,17 +1,17 @@
-import React from 'react';
-import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import React from 'react'
+import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
 
-import Layout from '../../components/layout';
-import SEO from '../../components/seo';
-import postStyles from './Post.module.css';
+import Layout from '../../components/layout'
+import SEO from '../../components/seo'
+import postStyles from './Post.module.css'
 // eslint-disable-next-line
-import { fluidImageBg } from '../../utils/ImageQuery';
-import 'katex/dist/katex.min.css';
+import { fluidImageBg } from '../../utils/ImageQuery'
+import 'katex/dist/katex.min.css'
 
 const BlogPost = ({ data, pageContext }) => {
-  const post = data.markdownRemark;
-  const { previous, next } = pageContext;
+  const post = data.markdownRemark
+  const { previous, next } = pageContext
   // console.log(previous, next);
   return (
     <Layout>
@@ -64,10 +64,10 @@ const BlogPost = ({ data, pageContext }) => {
         </section>
       </article>
     </Layout>
-  );
-};
+  )
+}
 
-export default BlogPost;
+export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($slug: String!) {
@@ -84,4 +84,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

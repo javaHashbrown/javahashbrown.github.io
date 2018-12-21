@@ -1,8 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-import Header from './Header/index';
-import '../global-styles.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
+
+import Header from './Header'
+import '../global-styles.css'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -23,7 +24,7 @@ const Layout = ({ children }) => (
           style={{
             margin: '0 auto',
             width: '100%',
-            paddingTop: 0
+            paddingTop: 0,
           }}
         >
           {children}
@@ -31,10 +32,10 @@ const Layout = ({ children }) => (
       </>
     )}
   />
-);
+)
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
-};
+  children: PropTypes.node.isRequired,
+}
 
-export default Layout;
+export default Layout
