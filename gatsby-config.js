@@ -80,6 +80,15 @@ module.exports = {
         respectDNT: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: '#d45c54',
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     'gatsby-plugin-offline',
