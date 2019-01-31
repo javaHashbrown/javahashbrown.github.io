@@ -10,6 +10,7 @@ import { fluidImageBg } from '../utils/ImageQuery'
 
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
+  const { siteMetadata } = data.site
   return (
     <Layout>
       <SEO title="Home" />
@@ -45,7 +46,7 @@ const IndexPage = ({ data }) => {
                 letterSpacing: '0.2rem',
               }}
             >
-              Thoughts die but codes survive -
+              {siteMetadata.sloganHome} -
             </h2>
             <h4
               style={{
@@ -54,7 +55,7 @@ const IndexPage = ({ data }) => {
                 letterSpacing: '0.1rem',
               }}
             >
-              welcom to alex's midway
+              {siteMetadata.title}
             </h4>
           </div>
         </div>
@@ -81,7 +82,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        description
+        sloganHome
       }
     }
     bgImg: file(relativePath: { eq: "paul-volkmer-638816-unsplash.jpg" }) {

@@ -1,8 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: "Alex's Midway",
+    title: "Welcome to Alex's Midway",
     description: 'a simple personal blog',
     author: 'Alex Wang',
+    sloganHome: 'An Old dog learning new tricks',
+    sloganBlog:
+      '"The ultimate test of your knowledge is your capacity to convey it to another."',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -1,17 +1,18 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from 'react'
+import { graphql } from 'gatsby'
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import { PostPreviewByYear } from '../components/PostPreview';
-import Img from 'gatsby-image';
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import { PostPreviewByYear } from '../components/PostPreview'
+import Img from 'gatsby-image'
 // eslint-disable-next-line
-import { fluidImageBg } from '../utils/ImageQuery';
+import { fluidImageBg } from '../utils/ImageQuery'
 
 const BlogPage = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark;
-  const postsByYear = categoryPostsByYear(posts);
-  const yearDesc = Object.keys(postsByYear).sort((a, b) => b - a);
+  const { siteMetadata } = data.site
+  const { edges: posts } = data.allMarkdownRemark
+  const postsByYear = categoryPostsByYear(posts)
+  const yearDesc = Object.keys(postsByYear).sort((a, b) => b - a)
   // console.log(yearDesc);
   return (
     <Layout>
@@ -20,7 +21,7 @@ const BlogPage = ({ data }) => {
         <Img
           style={{
             width: '100%',
-            height: '80vh'
+            height: '80vh',
           }}
           fluid={data.bgImg.childImageSharp.fluid}
           alt="osman-rana-263708-unsplash"
@@ -34,14 +35,14 @@ const BlogPage = ({ data }) => {
             right: '0',
             width: '100%',
             margin: 'auto',
-            padding: '0 2rem'
+            padding: '0 2rem',
           }}
         >
           <div
             style={{
               textTransform: 'uppercase',
               textShadow: '1px 1px 0 #011',
-              padding: '0 2rem'
+              padding: '0 2rem',
             }}
           >
             <h4
@@ -51,11 +52,10 @@ const BlogPage = ({ data }) => {
                 // color: '#d45c54',
                 letterSpacing: '0.1rem',
                 lineHeight: '2',
-                background: 'rgba(0,0,0,0.8)'
+                background: 'rgba(0,0,0,0.8)',
               }}
             >
-              "The ultimate test of your knowledge is your capacity to convey it
-              to another."
+              {siteMetadata.sloganBlog}
             </h4>
           </div>
         </div>
@@ -64,32 +64,31 @@ const BlogPage = ({ data }) => {
         style={{
           margin: '0 auto',
           display: 'flex',
-          flexWrap: 'wrap'
+          flexWrap: 'wrap',
         }}
       >
         {yearDesc.map(year => {
-          let postsInYear = postsByYear[year];
+          let postsInYear = postsByYear[year]
           return (
             <PostPreviewByYear
               key={year}
               year={year}
               postsInYear={postsInYear}
             />
-          );
+          )
         })}
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default BlogPage;
+export default BlogPage
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
-        description
+        sloganBlog
       }
     }
     bgImg: file(relativePath: { eq: "osman-rana-263708-unsplash.jpg" }) {
@@ -115,21 +114,21 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
 
 function categoryPostsByYear(posts, order = 'DESC') {
-  var postsByYear = {};
-  const reg = /(\d)+/g;
+  var postsByYear = {}
+  const reg = /(\d)+/g
   posts.forEach(post => {
-    const { date } = post.node.frontmatter;
-    const dates = date.match(reg);
-    const year = dates[1];
+    const { date } = post.node.frontmatter
+    const dates = date.match(reg)
+    const year = dates[1]
 
     if (!postsByYear[year]) {
-      postsByYear[year] = [];
+      postsByYear[year] = []
     }
-    postsByYear[year].push(post);
-  });
+    postsByYear[year].push(post)
+  })
   // console.log(postsByYear['2017'], postsByYear['2018']);
-  return postsByYear;
+  return postsByYear
 }
