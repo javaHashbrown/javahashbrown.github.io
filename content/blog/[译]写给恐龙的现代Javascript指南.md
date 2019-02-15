@@ -9,14 +9,13 @@ date: 2018-12-08
 > 原文名：[Modern JavaScript Explained For Dinosaurs](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70)  
 > 原文于 2017 年 10 月 19 日发表于 medium
 
-- [date: 2018-12-08](#date-2018-12-08)
-  - [写给恐龙的现代 JavaScript 指南](#写给恐龙的现代-javascript-指南)
-    - [传统 JavaScript 方式](#传统-javascript-方式)
-    - [使用 JavaScript 包管理器（npm）](#使用-javascript-包管理器npm)
-    - [使用 JavaScript 模块打包工具(webpack)](#使用-javascript-模块打包工具webpack)
-    - [转换代码以支持新语言特性（babel）](#转换代码以支持新语言特性babel)
-    - [使用任务管理工具（npm scripts）](#使用任务管理工具npm-scripts)
-    - [结语](#结语)
+- [写给恐龙的现代 JavaScript 指南](#写给恐龙的现代-javascript-指南)
+  - [传统 JavaScript 方式](#传统-javascript-方式)
+  - [使用 JavaScript 包管理器（npm）](#使用-javascript-包管理器npm)
+  - [使用 JavaScript 模块打包工具(webpack)](#使用-javascript-模块打包工具webpack)
+  - [转换代码以支持新语言特性（babel）](#转换代码以支持新语言特性babel)
+  - [使用任务管理工具（npm scripts）](#使用任务管理工具npm-scripts)
+  - [结语](#结语)
 
 ### 写给恐龙的现代 JavaScript 指南
 
@@ -277,8 +276,8 @@ module.exports = {
   entry: './index.js',
   output: {
     filename: 'main.js',
-    publicPath: 'dist'
-  }
+    publicPath: 'dist',
+  },
 };
 ```
 
@@ -315,7 +314,7 @@ module.exports = {
   entry: './index.js',
   output: {
     filename: 'main.js',
-    publicPath: 'dist'
+    publicPath: 'dist',
   },
   module: {
     rules: [
@@ -325,12 +324,12 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
-  }
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 };
 ```
 
