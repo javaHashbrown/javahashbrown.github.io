@@ -74,6 +74,4 @@ var isSubset = function isSubset(a, b) {
 
 ### Follow Up
 
-LC 有一道题和这个很类似（[LeetCode 392] Is Subsequence），但 392 里的 A 却是无序的，一样用 two pointer 解出来了。
-
-这道题 2 个数组有序这么强的条件，我觉得应该有更优解。暂时没想到，改天想到了再补上。
+LC 有一道题和这个很类似（[LeetCode 392] Is Subsequence）。
