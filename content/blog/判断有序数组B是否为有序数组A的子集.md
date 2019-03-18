@@ -74,4 +74,4 @@ var isSubset = function isSubset(a, b) {
 
 ### Follow Up
 
-LC 有一道题和这个很类似（[LeetCode 392] Is Subsequence）。
+LC 有一道题和这个很类似（[LeetCode 392] Is Subsequence）
