@@ -24,7 +24,7 @@ date: 2019-03-24
 
 **疑问 1.1**：`Object.prototype`是否也是对象？如果是，那么它也应该有`__proto__`属性，这个属性应该指向它自身？如果不是对象，那它是什么？
 
-1. 任何函数都是 `函数 (Function)` 创建的实例，且拥有`prototype`属性，该属性指向函数对应的`原型 (prototype)` 对象
+2. 任何函数都是 `函数 (Function)` 创建的实例，且拥有`prototype`属性，该属性指向函数对应的`原型 (prototype)` 对象
 
    根据 2 和推论 1.1，可以得到推论：
 
@@ -34,7 +34,7 @@ date: 2019-03-24
 
 **疑问 2.1**：`Function`作为元构造函数，其自身又是哪个构造函数的实例呢？如果`Function`是自身的实例，那么其`__proto__`属性应该指向`Function.prototype`；如果不是，它的`__proto__`属性会指向哪里？
 
-1. 构造函数的`原型 (prototype)`对象都有一个`构造函数(constructor)`属性，指向其对应的构造函数
+3. 构造函数的`原型 (prototype)`对象都有一个`构造函数(constructor)`属性，指向其对应的构造函数
 
    - 例：即 Array.prototype.constructor 将指向 Array
 
