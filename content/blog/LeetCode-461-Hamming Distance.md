@@ -1,4 +1,3 @@
-
 ---
 title: '[LeetCode 461] Hamming Distance'
 date: 2019-02-11
