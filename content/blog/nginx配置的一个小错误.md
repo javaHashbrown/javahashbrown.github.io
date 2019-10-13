@@ -19,6 +19,7 @@ date: 2019-10-11
 3. `nginx -t` 检查配置  
    
    检查失败，报错`“duplicate upstream a-proxy”`，定位到A的`nginx`配置文件
+   
    `a-proxy`是配置的反向代理，在配置文件里大概是这样的
    ```
    server {
