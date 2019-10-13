@@ -6,7 +6,7 @@ date: 2019-09-19
 > #### TL;DR  
 > babel不会打包node_modules里的文件，所以引入组件时，必须用组件打包后的代码
 
-#### 事件经过
+#### 问题描述
 npm install安装了公司内部组件之后，使用时import了源文件，然后项目打包报错:
 
 > `... UglifyJS unexpected token: punc <<(>> ....`
