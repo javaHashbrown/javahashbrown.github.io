@@ -37,11 +37,11 @@ date: 2019-10-10
 
 >// 菜鸡和大佬的对话
 >
->大佬： 这个job ID对应的artifacts被移除了，应该过期了
->菜鸡： 为什么再次打包生成了artifacts，发布还是失败呢？明明可以从gitlab里下载到最新打包的artifacts
->大佬： 因为gitlab的API不保证多次打包取最新结果，它只是按job ID取artifacts
->大佬： 重新提交一次，重新生成一个commit id就可以了
->菜鸡： （似懂非懂）谢谢大佬！
+>大佬： 这个job ID对应的artifacts被移除了，应该过期了  
+>菜鸡： 为什么再次打包生成了artifacts，发布还是失败呢？明明可以从gitlab里下载到最新打包的artifacts  
+>大佬： 因为gitlab的API不保证多次打包取最新结果，它只是按job ID取artifacts  
+>大佬： 重新提交一次，重新生成一个commit id就可以了  
+>菜鸡： （似懂非懂）谢谢大佬！  
 
 #### 解决方案
 
