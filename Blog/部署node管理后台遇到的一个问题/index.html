@@ -65,9 +65,9 @@
 </ol>
 <blockquote>
 <p>// 菜鸡和大佬的对话</p>
-<p>大佬： 这个job ID对应的artifacts被移除了，应该过期了<br>
+<p>大佬： 这个job id对应的artifacts被移除了，应该过期了<br>
 菜鸡： 为什么再次打包生成了artifacts，发布还是失败呢？明明可以从gitlab里下载到最新打包的artifacts<br>
-大佬： 因为gitlab的API不保证多次打包取最新结果，它只是按job ID取artifacts<br>
+大佬： 因为gitlab的API不保证多次打包取最新结果，它只是按job id取artifacts<br>
 大佬： 重新提交一次，重新生成一个commit id就可以了<br>
 菜鸡： （似懂非懂）谢谢大佬！  </p>
 </blockquote>
@@ -77,32 +77,63 @@
 <li>再次发布成功</li>
 </ol>
 <h4 id="原因分析"><a href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90" aria-label="原因分析 permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>原因分析</h4>
-<p>查了一下gitlab的文档，唯一有关的就是这里了</p>
-<p><a href="https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id" target="_blank" rel="noopener">https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id</a></p>
-<p>确实提到了<code>code 404</code>，就是没有找到文件</p>
+<p>再次问了大佬之后，终于弄明白了原因。<br>
+gitlab只能通过API下载artifacts，而不是保存在固定文件路径里。所以公司自己弄了一个组件，通过拼接参数获得artifacts的下载地址，规则如下： </p>
+<ol>
+<li>
+<p>根据commit ID取最新的Pipeline ID</p>
+<blockquote>
+<h3 id="api---get-a-single-commit"><a href="#api---get-a-single-commit" aria-label="api   get a single commit permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API - <a href="https://docs.gitlab.com/ee/api/commits.html#get-a-single-commit" target="_blank" rel="noopener">Get a single commit</a></h3>
+<p>Get a specific commit identified by the commit hash or name of a branch or tag.  </p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET /projects/:id/repository/commits/:sha</code></pre></div>
+<p>返回的字段中的last_pipeline就是最新的pipeline id</p>
+</blockquote>
+</li>
+<li>
+<p>根据最新的Pipeline ID取第一个成功的Job ID</p>
+<blockquote>
+<h3 id="api---list-pipeline-jobs"><a href="#api---list-pipeline-jobs" aria-label="api   list pipeline jobs permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API - <a href="https://docs.gitlab.com/ee/api/jobs.html#list-pipeline-jobs" target="_blank" rel="noopener">List pipeline jobs</a></h3>
+<p>Get a list of jobs for a pipeline.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET /projects/:id/pipelines/:pipeline_id/jobs</code></pre></div>
+<p>返回一个数组，根据status字段过滤掉执行失败Jobs，然后再取response[0]就是第一个成功的Job</p>
+</blockquote>
+</li>
+<li>
+<p>根据Job ID下载对应的artifacts</p>
+<blockquote>
+<h3 id="api---download-a-single-artifact-file-by-job-id"><a href="#api---download-a-single-artifact-file-by-job-id" aria-label="api   download a single artifact file by job id permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API - <a href="https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id" target="_blank" rel="noopener">Download a single artifact file by job ID</a></h3>
+<p>Download a single artifact file from a job with a specified ID from within the job’s artifacts zipped archive. The file is extracted from the archive and streamed to the client.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET /projects/:id/jobs/:job_id/artifacts/*artifact_path</code></pre></div>
+<p>返回要下载的artifacts文件流</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>结论</strong>: 当有多次打包的时候，因为pipeline id不会变化，只要之前有成功的jobs生成artifacts，那么按照上面的规则，artifacts下载API就会指向它。当artifacts过期被清除后，自然就无法找到文件了，因此接口状态返回404失败，如下表所示:</p>
+<blockquote>
+<h3 id="api---download-a-single-artifact-file-by-job-id-接口返回状态码"><a href="#api---download-a-single-artifact-file-by-job-id-%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81%E7%A0%81" aria-label="api   download a single artifact file by job id 接口返回状态码 permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API - <a href="https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id" target="_blank" rel="noopener">Download a single artifact file by job ID</a> 接口返回状态码</h3>
 <table>
 <thead>
 <tr>
-<th align="left">Status</th>
-<th align="left">Description</th>
+<th>Status</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">200</td>
-<td align="left">Sends a single artifact file</td>
+<td>200</td>
+<td>Sends a single artifact file</td>
 </tr>
 <tr>
-<td align="left">400</td>
-<td align="left">Invalid path provided</td>
+<td>400</td>
+<td>Invalid path provided</td>
 </tr>
 <tr>
-<td align="left">404</td>
-<td align="left">Build not found or no file/artifacts</td>
+<td>404</td>
+<td>Build not found or no file/artifacts</td>
 </tr>
 </tbody>
 </table>
-<p><strong>还没弄明白，未完待续...</strong></p>
+</blockquote>
 <h3 id="问题二：忘记配置线上数据库"><a href="#%E9%97%AE%E9%A2%98%E4%BA%8C%EF%BC%9A%E5%BF%98%E8%AE%B0%E9%85%8D%E7%BD%AE%E7%BA%BF%E4%B8%8A%E6%95%B0%E6%8D%AE%E5%BA%93" aria-label="问题二：忘记配置线上数据库 permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>问题二：忘记配置线上数据库</h3>
 <blockquote>
 <p>这个实在是有点尴尬，但是部署的时候真的忘记了配置线上数据库</p>
