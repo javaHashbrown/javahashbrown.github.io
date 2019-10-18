@@ -37,9 +37,9 @@ date: 2019-10-10
 
 >// 菜鸡和大佬的对话
 >
->大佬： 这个job ID对应的artifacts被移除了，应该过期了  
+>大佬： 这个job id对应的artifacts被移除了，应该过期了  
 >菜鸡： 为什么再次打包生成了artifacts，发布还是失败呢？明明可以从gitlab里下载到最新打包的artifacts  
->大佬： 因为gitlab的API不保证多次打包取最新结果，它只是按job ID取artifacts  
+>大佬： 因为gitlab的API不保证多次打包取最新结果，它只是按job id取artifacts  
 >大佬： 重新提交一次，重新生成一个commit id就可以了  
 >菜鸡： （似懂非懂）谢谢大佬！  
 
@@ -50,19 +50,49 @@ date: 2019-10-10
 
 #### 原因分析
 
-查了一下gitlab的文档，唯一有关的就是这里了
+再次问了大佬之后，终于弄明白了原因。  
+gitlab只能通过API下载artifacts，而不是保存在固定文件路径里。所以公司自己弄了一个组件，通过拼接参数获得artifacts的下载地址，规则如下： 
 
-https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id
+1. 根据commit ID取最新的Pipeline ID
+>### API - [Get a single commit](https://docs.gitlab.com/ee/api/commits.html#get-a-single-commit)
+>
+>Get a specific commit identified by the commit hash or name of a branch or tag.  
+>
+>```
+>GET /projects/:id/repository/commits/:sha
+>```
+>
+>返回的字段中的last_pipeline就是最新的pipeline id
 
-确实提到了`code 404`，就是没有找到文件
+2. 根据最新的Pipeline ID取第一个成功的Job ID
+>### API - [List pipeline jobs](https://docs.gitlab.com/ee/api/jobs.html#list-pipeline-jobs)
+>Get a list of jobs for a pipeline.
+>
+>```
+>GET /projects/:id/pipelines/:pipeline_id/jobs
+>```
+>
+>返回一个数组，根据status字段过滤掉执行失败Jobs，然后再取response[0]就是第一个成功的Job
 
-| Status | Description                          |
-| :----- | :----------------------------------- |
-| 200    | Sends a single artifact file         |
-| 400    | Invalid path provided                |
-| 404    | Build not found or no file/artifacts |
+3. 根据Job ID下载对应的artifacts
+>### API - [Download a single artifact file by job ID](https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id)
+>
+>Download a single artifact file from a job with a specified ID from within the job’s artifacts zipped archive. The file is extracted from the archive and streamed to the client.
+>
+>```
+>GET /projects/:id/jobs/:job_id/artifacts/*artifact_path
+>```
+>返回要下载的artifacts文件流
 
-**还没弄明白，未完待续...**
+**结论**: 当有多次打包的时候，因为pipeline id不会变化，只要之前有成功的jobs生成artifacts，那么按照上面的规则，artifacts下载API就会指向它。当artifacts过期被清除后，自然就无法找到文件了，因此接口状态返回404失败，如下表所示:
+
+>### API - [Download a single artifact file by job ID](https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id) 接口返回状态码
+>
+>|Status|Description|
+>|---|---|
+>|200|Sends a single artifact file|
+>|400|Invalid path provided|
+>|404|Build not found or no file/artifacts|
 
 
 
@@ -215,3 +245,4 @@ https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-
 - 发布业务，观察是否顺利部署
 
 **未完待续...**
+
