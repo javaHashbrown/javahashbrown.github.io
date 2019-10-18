@@ -64,6 +64,8 @@ gitlab只能通过API下载artifacts，而不是保存在固定文件路径里�
 >
 >返回的字段中的last_pipeline就是最新的pipeline id
 
+
+
 2. 根据最新的Pipeline ID取第一个成功的Job ID
 >### API - [List pipeline jobs](https://docs.gitlab.com/ee/api/jobs.html#list-pipeline-jobs)
 >Get a list of jobs for a pipeline.
@@ -73,6 +75,8 @@ gitlab只能通过API下载artifacts，而不是保存在固定文件路径里�
 >```
 >
 >返回一个数组，根据status字段过滤掉执行失败Jobs，然后再取response[0]就是第一个成功的Job
+
+
 
 3. 根据Job ID下载对应的artifacts
 >### API - [Download a single artifact file by job ID](https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id)
@@ -84,6 +88,8 @@ gitlab只能通过API下载artifacts，而不是保存在固定文件路径里�
 >```
 >返回要下载的artifacts文件流
 
+
+
 **结论**: 当有多次打包的时候，因为pipeline id不会变化，只要之前有成功的jobs生成artifacts，那么按照上面的规则，artifacts下载API就会指向它。当artifacts过期被清除后，自然就无法找到文件了，因此接口状态返回404失败，如下表所示:
 
 >### API - [Download a single artifact file by job ID](https://docs.gitlab.com/ee/api/jobs.html#download-a-single-artifact-file-by-job-id) 接口返回状态码
@@ -93,6 +99,8 @@ gitlab只能通过API下载artifacts，而不是保存在固定文件路径里�
 >|200|Sends a single artifact file|
 >|400|Invalid path provided|
 >|404|Build not found or no file/artifacts|
+
+
 
 
 
@@ -113,6 +121,8 @@ gitlab只能通过API下载artifacts，而不是保存在固定文件路径里�
 #### 解决方案
 
 配置好线上数据库，然后再次发布，错误消失，终于看到业务界面了
+
+
 
 
 
@@ -216,6 +226,8 @@ gitlab只能通过API下载artifacts，而不是保存在固定文件路径里�
 所以安装node7的时候，前一个pm2的进程还在运行，安装完成后2个pm2进程互相干扰。细节就不清楚了，反正对接口服务的请求在这样的情况下根本就没发出去。哎...
 
 **总耗时：断断续续花了3天**
+
+
 
 
 
