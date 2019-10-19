@@ -116,20 +116,20 @@ date: 2019-10-12
   ```html
   <!-- 原始html -->
   <div class="container">
-  	<bug-component />
-  	<div class="sibling">
-      <p>我是示例文本</p>
-  	</div>
-   </div>
-  
-  <!-- 浏览器补充后，实际html -->
-  <div class="container">
-  	<bug-component>
+      <bug-component />
       <div class="sibling">
         <p>我是示例文本</p>
       </div>
-    </bug-component>
-   </div>
+  </div>
+  
+  <!-- 浏览器补充后，实际html -->
+  <div class="container">
+      <bug-component>
+          <div class="sibling">
+            <p>我是示例文本</p>
+          </div>
+      </bug-component>
+  </div>
   ```
 
 - 这就是为什么在bug试验1的情境下，Vue渲染后的组件只剩下了组件模版的内容，而兄弟节点的内容消失了。因为对Vue来说，这个时候自闭合标签和它的兄弟节点都只是组件标记的一部分，都会被替换为组件模版
