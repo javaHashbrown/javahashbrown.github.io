@@ -224,16 +224,16 @@ gitlab只能通过API下载artifacts，而不是保存在固定文件路径里�
 <ol>
 <li>第一次：复原bug过程</li>
 <li>准备工作：停止pm2服务，杀掉所有pm2关联进程，卸载node及相关组件服务</li>
-<li>恢复初始状态：安装node10 -> 卸载node10 -> 安装node7(可能需要运维介入) -> 发布业务</li>
-<li>查看是否复现bug</li>
-<li>第二次：消除bug，一次性顺利安装</li>
+<li>恢复初始状态：安装node10 -> 卸载node10 -> 手动安装node7失败 -> 运维人工介入 -> 发布业务</li>
+<li>bug复现</li>
+<li>第二次：每次安装卸载都杀掉进程，观察是否bug复现</li>
 <li>准备工作： 在第一次的基础上，停止pm2服务，杀掉所有pm2关联进程，卸载node及相关组件服务</li>
 <li>安装node10</li>
 <li>停止所有pm2相关服务，杀掉pm2关联进程，卸载node10</li>
-<li>安装node7</li>
-<li>发布业务，观察是否顺利部署</li>
-</ol>
-<p><strong>未完待续...</strong></p></div><nav class="Post-module--nav--3gwJ9"><div class="Post-module--left--3WkxX"><a class="Post-module--button--39RuZ" href="/Blog/前端二年/"><span class="Post-module--prev--BHr9s">前端二年</span></a></div><div class="Post-module--right--1ERWj"><a class="Post-module--button--39RuZ" href="/Blog/nginx配置的一个小错误/"><span class="Post-module--next--BnvP9">nginx配置的一个小错误</span></a></div></nav></section></article></div></div></div><script>
+<li>安装node7，自动安装失败，运维人工介入</li>
+<li>发布业务</li>
+<li>bug消失</li>
+</ol></div><nav class="Post-module--nav--3gwJ9"><div class="Post-module--left--3WkxX"><a class="Post-module--button--39RuZ" href="/Blog/前端二年/"><span class="Post-module--prev--BHr9s">前端二年</span></a></div><div class="Post-module--right--1ERWj"><a class="Post-module--button--39RuZ" href="/Blog/nginx配置的一个小错误/"><span class="Post-module--next--BnvP9">nginx配置的一个小错误</span></a></div></nav></section></article></div></div></div><script>
   
   
   if(true) {
