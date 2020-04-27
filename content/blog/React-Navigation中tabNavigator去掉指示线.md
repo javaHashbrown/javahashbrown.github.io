@@ -1,5 +1,5 @@
 ---
-title: 'React-Navigation中tabNavigator去掉讨厌的指示线'
+title: 'React-Navigation中tabNavigator去掉指示线'
 date: 2018-03-12
 ---
 
