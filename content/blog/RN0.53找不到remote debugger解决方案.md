@@ -1,6 +1,6 @@
 ---
 title: 'RN0.53找不到remote debugger解决方案'
-date: 2018-03-08
+date: '2018-03-08'
 ---
 
 > 更新：

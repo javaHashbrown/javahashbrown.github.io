@@ -1,6 +1,6 @@
 ---
 title: 'null和undefined的比较'
-date: 2018-05-03
+date: '2018-05-03'
 ---
 
 ### 相同点

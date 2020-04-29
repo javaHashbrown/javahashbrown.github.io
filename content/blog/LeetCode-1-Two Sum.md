@@ -1,6 +1,6 @@
 ---
 title: '[LeetCode 1] Two Sum'
-date: 2019-02-28
+date: '2019-02-28'
 ---
 
 Given an array of integers, return **indices** of the two numbers such that they add up to a specific target.

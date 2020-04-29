@@ -1,6 +1,6 @@
 ---
 title: 'RN0.53+react-native-splash-screen3.0.1，Android启动闪退'
-date: 2018-03-13
+date: '2018-03-13'
 ---
 
 splash-screen 这个 RN 插件挺好用的，升级之后启动 Android 版 APP 就闪退

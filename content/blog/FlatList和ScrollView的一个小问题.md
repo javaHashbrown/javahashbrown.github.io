@@ -1,6 +1,6 @@
 ---
 title: '使用FlatList(ScrollView)的一个小问题'
-date: 2018-05-19
+date: '2018-05-19'
 ---
 
 ##### 问题描述

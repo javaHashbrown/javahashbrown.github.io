@@ -1,16 +1,15 @@
 ---
 title: '几个JS高阶函数的简单底层实现'
-date: 2018-10-07
+date: '2018-10-07'
 ---
 
-- [date: 2018-10-07](#date-2018-10-07)
-    - [高阶函数](#高阶函数)
-    - [Array.prototype.forEach](#arrayprototypeforeach)
-    - [Array.prototype.map](#arrayprototypemap)
-    - [Array.prototype.filter](#arrayprototypefilter)
-    - [Array.prototype.every](#arrayprototypeevery)
-    - [Array.protytype.some](#arrayprotytypesome)
-    - [Array.protytype.reduce](#arrayprotytypereduce)
+- [高阶函数](#%e9%ab%98%e9%98%b6%e5%87%bd%e6%95%b0)
+- [Array.prototype.forEach](#arrayprototypeforeach)
+- [Array.prototype.map](#arrayprototypemap)
+- [Array.prototype.filter](#arrayprototypefilter)
+- [Array.prototype.every](#arrayprototypeevery)
+- [Array.protytype.some](#arrayprotytypesome)
+- [Array.protytype.reduce](#arrayprotytypereduce)
 
 #### 高阶函数
 

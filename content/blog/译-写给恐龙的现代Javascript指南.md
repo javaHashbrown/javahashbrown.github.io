@@ -1,6 +1,6 @@
 ---
 title: '[译]写给恐龙的现代Javascript指南'
-date: 2018-12-08
+date: '2018-12-08'
 ---
 
 写在前面：这是一篇译文，是原作者系列文章的第一篇，第二篇主题是 CSS , 第三篇是 HTML。
@@ -9,13 +9,13 @@ date: 2018-12-08
 > 原文名：[Modern JavaScript Explained For Dinosaurs](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70)  
 > 原文于 2017 年 10 月 19 日发表于 medium
 
-- [写给恐龙的现代 JavaScript 指南](#写给恐龙的现代-javascript-指南)
-  - [传统 JavaScript 方式](#传统-javascript-方式)
-  - [使用 JavaScript 包管理器（npm）](#使用-javascript-包管理器npm)
-  - [使用 JavaScript 模块打包工具(webpack)](#使用-javascript-模块打包工具webpack)
-  - [转换代码以支持新语言特性（babel）](#转换代码以支持新语言特性babel)
-  - [使用任务管理工具（npm scripts）](#使用任务管理工具npm-scripts)
-  - [结语](#结语)
+- [写给恐龙的现代 JavaScript 指南](#%e5%86%99%e7%bb%99%e6%81%90%e9%be%99%e7%9a%84%e7%8e%b0%e4%bb%a3-javascript-%e6%8c%87%e5%8d%97)
+  - [传统 JavaScript 方式](#%e4%bc%a0%e7%bb%9f-javascript-%e6%96%b9%e5%bc%8f)
+  - [使用 JavaScript 包管理器（npm）](#%e4%bd%bf%e7%94%a8-javascript-%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8npm)
+  - [使用 JavaScript 模块打包工具(webpack)](#%e4%bd%bf%e7%94%a8-javascript-%e6%a8%a1%e5%9d%97%e6%89%93%e5%8c%85%e5%b7%a5%e5%85%b7webpack)
+  - [转换代码以支持新语言特性（babel）](#%e8%bd%ac%e6%8d%a2%e4%bb%a3%e7%a0%81%e4%bb%a5%e6%94%af%e6%8c%81%e6%96%b0%e8%af%ad%e8%a8%80%e7%89%b9%e6%80%a7babel)
+  - [使用任务管理工具（npm scripts）](#%e4%bd%bf%e7%94%a8%e4%bb%bb%e5%8a%a1%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7npm-scripts)
+  - [结语](#%e7%bb%93%e8%af%ad)
 
 ### 写给恐龙的现代 JavaScript 指南
 

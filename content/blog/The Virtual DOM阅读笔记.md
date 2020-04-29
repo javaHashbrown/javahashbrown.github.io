@@ -1,6 +1,6 @@
 ---
 title: 'The Virtual DOM阅读笔记'
-date: 2017-08-22
+date: '2017-08-22'
 ---
 
 Dan Abramov 在 2018-11-24 发了一系列推文是说明 React 的本质。他提到 Virtual DOM 这个词该退休了，这个词并没有说清楚 React 到底是什么。React 本质是“UI 类型”，和 JS 中其他类型一样可以保存、修改和操作，可表现性才是它的本质，而不是通过 diff 来减少 DOM 更改。

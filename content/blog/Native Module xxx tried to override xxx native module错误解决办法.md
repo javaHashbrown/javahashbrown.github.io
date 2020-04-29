@@ -1,6 +1,6 @@
 ---
 title: 'Native Module xxx tried to override xxx native module错误解决办法'
-date: 2018-03-13
+date: '2018-03-13'
 ---
 
 安卓下又报了个错误

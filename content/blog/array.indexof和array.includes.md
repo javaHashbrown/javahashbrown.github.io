@@ -1,6 +1,6 @@
 ---
 title: 'array.indexOf和array.includes'
-date: 2018-10-03
+date: '2018-10-03'
 ---
 
 - [date: 2018-10-03](#date-2018-10-03)
