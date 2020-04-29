@@ -1,6 +1,6 @@
 ---
 title: 'header title在Android下不居中问题的解决技巧'
-date: 2017-09-22
+date: '2017-09-22'
 ---
 
 页面用了 stackNavigator，header left 加了一个 button，header titleStyle 也设置了居中

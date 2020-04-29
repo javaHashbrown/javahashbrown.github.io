@@ -1,6 +1,6 @@
 ---
 title: 'Android键盘遮挡问题'
-date: 2018-03-14
+date: '2018-03-14'
 ---
 
 有时候需要键盘遮挡住屏幕的一部分，有时候不需要，可以配置`android\app\src\main\AndroidManifest.xml`文件  

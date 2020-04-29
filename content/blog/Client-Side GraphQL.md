@@ -1,5 +1,5 @@
 ---
 title: 'Client-Side GraphQL'
-date: 2020-06-15
+date: '2020-06-15'
 
 ---

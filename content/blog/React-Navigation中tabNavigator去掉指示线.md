@@ -1,6 +1,6 @@
 ---
 title: 'React-Navigation中tabNavigator去掉指示线'
-date: 2018-03-12
+date: '2018-03-12'
 ---
 
 bottom 模式的 tabBar 也出现了 indicator（就是选中某个 tabbar icon 的时候，出现的那根线，一般是出现在 top 模式下的）

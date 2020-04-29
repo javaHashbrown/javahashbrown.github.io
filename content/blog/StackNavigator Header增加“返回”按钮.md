@@ -1,6 +1,6 @@
 ---
 title: 'StackNavigator Header增加“返回”按钮'
-date: 2017-09-26
+date: '2017-09-26'
 ---
 
 StackNavigator 自带了 navigationOptions 属性，但必须以静态对象申明

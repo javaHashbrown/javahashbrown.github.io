@@ -1,6 +1,6 @@
 ---
 title: '实现自定义tabbar component'
-date: 2018-03-13
+date: '2018-03-13'
 ---
 
 需要覆盖 tabbar component

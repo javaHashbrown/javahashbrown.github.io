@@ -1,6 +1,6 @@
 ---
 title: 'Android模拟器访问本地web服务的url'
-date: 2018-03-29
+date: '2018-03-29'
 ---
 
 不会自己搭`mock server`的前端不是好前端。  

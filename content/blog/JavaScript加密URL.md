@@ -1,6 +1,6 @@
 ---
 title: 'JavaScript加密URL'
-date: 2018-05-01
+date: '2018-05-01'
 ---
 
 ## 挖坑，等填

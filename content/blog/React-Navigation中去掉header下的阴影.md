@@ -1,6 +1,6 @@
 ---
 title: 'React-Navigation中去掉header下的阴影'
-date: 2018-03-18
+date: '2018-03-18'
 ---
 
 1. StackNavigator  

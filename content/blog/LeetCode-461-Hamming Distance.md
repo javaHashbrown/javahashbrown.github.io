@@ -1,6 +1,6 @@
 ---
 title: '[LeetCode 461] Hamming Distance'
-date: 2019-02-11
+date: '2019-02-11'
 ---
 
 The Hamming distance between two integers is the number of positions at which the corresponding bits are different.

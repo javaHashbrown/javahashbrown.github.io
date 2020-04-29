@@ -1,10 +1,9 @@
 ---
 title: 'typeof与instanceof'
-date: 2018-10-22
+date: '2018-10-22'
 ---
-- [date: 2018-10-22](#date-2018-10-22)
-    - [typeof](#typeof)
-    - [instanceof](#instanceof)
+- [typeof](#typeof)
+- [instanceof](#instanceof)
 
 #### typeof
 `typeof`可以用来测试变量的类型，语法是`typeof myVariable`，返回值为变量类型的字符串。一般来说，基本类型会返回描述基本类型的字符串，而对象则返回`'object'`字符串，但是有2个例外。  

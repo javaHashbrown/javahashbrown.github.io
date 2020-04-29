@@ -1,6 +1,6 @@
 ---
 title: 'Vue使用provide-inject特性注入皮肤配置'
-date: 2020-01-03
+date: '2020-01-03'
 
 
 ---
