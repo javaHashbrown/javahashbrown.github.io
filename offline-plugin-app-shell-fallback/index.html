@@ -1,8 +1,14 @@
-<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 2.13.45"/><title data-react-helmet="true"></title><style type="text/css">.gatsby-resp-image-image{width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;color:transparent;}</style><style type="text/css">
-    .anchor {
-      float: left;
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 2.21.1"/><title data-react-helmet="true"></title><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
       padding-right: 4px;
-      margin-left: -20px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
     }
     h1 .anchor svg,
     h2 .anchor svg,
@@ -32,7 +38,9 @@
       if (hash !== '') {
         var element = document.getElementById(hash)
         if (element) {
-          var offset = element.offsetTop
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
           // Wait for the browser to finish rendering before scrolling.
           setTimeout((function() {
             window.scrollTo(0, offset - 0)
@@ -40,7 +48,7 @@
         }
       }
     })
-  </script><link rel="shortcut icon" href="/icons/icon-48x48.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#242121"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=205744841d9ccdb70fd2441831cd1323"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link as="script" rel="preload" href="/component---node-modules-gatsby-plugin-offline-app-shell-js-f5c754a3646e1dbdcb71.js"/><link as="script" rel="preload" href="/app-3ed55b78e1cf58a3fddc.js"/><link as="script" rel="preload" href="/webpack-runtime-f02dc512507bc63a159b.js"/></head><body><noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"></div></div><script>
+  </script><link rel="icon" href="/favicon-32x32.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#242121"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=c392780086182a7a4b7d7086cef53760"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link as="script" rel="preload" href="/component---node-modules-gatsby-plugin-offline-app-shell-js-a80c80a072a2dec4a792.js"/><link as="script" rel="preload" href="/framework-737c3e16d462c41141c7.js"/><link as="script" rel="preload" href="/app-94413d7bd23b40a803ee.js"/><link as="script" rel="preload" href="/webpack-runtime-9be14465698ce64a689a.js"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
   if(true) {
@@ -56,4 +64,4 @@
       
       
       
-      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/offline-plugin-app-shell-fallback/";window.webpackCompilationHash="9b2619a88bc10fca86fe";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-3ed55b78e1cf58a3fddc.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-f5c754a3646e1dbdcb71.js"],"component---src-templates-post-post-js":["/component---src-templates-post-post-js-1aa1033a781b18cde665.js"],"component---src-pages-404-js":["/component---src-pages-404-js-de5ae43adc070cd7afd2.js"],"component---src-pages-about-js":["/component---src-pages-about-js-93c7ccefc2f91c639963.js"],"component---src-pages-blog-js":["/component---src-pages-blog-js-bdf77a3480d1f655d44e.js"],"component---src-pages-index-js":["/component---src-pages-index-js-8776e3679e3559eacd6d.js"],"component---src-pages-portfolio-js":["/component---src-pages-portfolio-js-6fef60d597c352713711.js"]};/*]]>*/</script><script src="/webpack-runtime-f02dc512507bc63a159b.js" async=""></script><script src="/app-3ed55b78e1cf58a3fddc.js" async=""></script><script src="/component---node-modules-gatsby-plugin-offline-app-shell-js-f5c754a3646e1dbdcb71.js" async=""></script></body></html>
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/offline-plugin-app-shell-fallback/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-94413d7bd23b40a803ee.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-a80c80a072a2dec4a792.js"],"component---src-pages-404-js":["/component---src-pages-404-js-347606384f95fc00bf3c.js"],"component---src-pages-about-js":["/component---src-pages-about-js-bafc456cb5e1522bbdd3.js"],"component---src-pages-blog-js":["/component---src-pages-blog-js-67c450b78407046bb6ac.js"],"component---src-pages-index-js":["/component---src-pages-index-js-7081158b455f9cb649d5.js"],"component---src-pages-portfolio-js":["/component---src-pages-portfolio-js-56003239729d2994abd9.js"],"component---src-templates-post-post-js":["/component---src-templates-post-post-js-e294b05298c2f32a08fc.js"]};/*]]>*/</script><script src="/webpack-runtime-9be14465698ce64a689a.js" async=""></script><script src="/app-94413d7bd23b40a803ee.js" async=""></script><script src="/framework-737c3e16d462c41141c7.js" async=""></script><script src="/component---node-modules-gatsby-plugin-offline-app-shell-js-a80c80a072a2dec4a792.js" async=""></script></body></html>
