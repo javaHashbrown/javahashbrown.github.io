@@ -8,7 +8,7 @@ date: '2020-01-07'
 
 > 用于测试配置文件中location匹配，感觉很方便
 >
-> Nginx location mastch tester： https://nginx.viraptor.info/
+> Nginx location match tester： https://nginx.viraptor.info/
 
 ### 背景
 
