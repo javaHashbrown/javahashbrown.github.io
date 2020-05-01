@@ -51,7 +51,7 @@ node接入层+前端，新老业务共用域名
 ```javascript
 //webpack config 追加配置
 // 静态资源发布配置
-publicPath: DEV ? 'https://news.futunn.com/dev' : 'https://news.futunn.com',
+publicPath: DEV ? 'https://www.example.com/dev' : 'https://www.example.com',
 // webpack-dev-server配置
 devServer: {
 	port,
@@ -60,7 +60,7 @@ devServer: {
   disableHostCheck: true,
   // 修改web socket端口和域名，让nginx可以解析响应
   sockPort: 443,
-  sockHost: 'news.futunn.com'
+  sockHost: 'www.example.com'
 },
 ```
 
@@ -71,72 +71,28 @@ server
 {
     listen 80;
 
-    server_name news.futunn.com cdnnews.futunn.com;
+    server_name www.example.com;
     return  301 https://$host$request_uri;
 }
 server
 {
     listen 443 ssl;
-    server_name news.futunn.com cdnnews.futunn.com;
-    #server_name news.futunn.com;
+    server_name www.example.com;
     index index.html index.htm index.php;
-    root /Users/jiaqiwang/work/futunn_news/web;
+    root /path/to/your/project;
 	
 	# ssl             on;
-    ssl_certificate /Users/jiaqiwang/work/conf/https/futunn.com.crt;
-    ssl_certificate_key /Users/jiaqiwang/work/conf/https/futunn.com.key;
+    ssl_certificate /path/to/your/cert;
+    ssl_certificate_key /path/to/your/key;
 
-    error_log /Users/jiaqiwang/work/conf/logs/error_news.futunn.com.log;
-    access_log /Users/jiaqiwang/work/conf/logs/access_news.futunn.com.log combined;    
+    error_log /path/to/your/error/log;
+    access_log /path/to/your/access/log combined;    
 
 
-    if ($host ~* ^futunn\.com$)
+    if ($host ~* ^example\.com$)
     {
         rewrite ^/(.*)$ https://www.$host$request_uri  permanent;
         break;
-    }
-
-
-
-    location /
-    {
-        if (-f $request_filename)
-        {
-            expires 7200;
-            break;
-        }
-        if (!-f $request_filename)
-        {
-            rewrite ^(.*)$ /index.php last;
-            break;
-        }
-    }
-
-    set $allowOrigin "";
-    if ($host ~* ^cdnnews\.futunn\.com$) {
-       set $allowOrigin "*";
-    }
-    add_header Access-Control-Allow-Origin $allowOrigin;
-
-    location ~.*\.php$
-    {
-
-        if (!-f $request_filename)
-        {
-            rewrite ^(.*)$ /index.php last;
-            break;
-        }
-
-        include fastcgi.conf;
-        fastcgi_param  HTTPS on;
-        fastcgi_pass  127.0.0.1:9000;
-        fastcgi_index index.php;
-
-        break;
-    }
-    
-    location ~* \.(eot|ttf|woff)$ {
-        add_header Access-Control-Allow-Origin *;
     }
     
     #生产环境，node站点静态资源请求转发到node
@@ -151,7 +107,7 @@ server
 		
     location ~* \.(css|js)$ {
 	    add_header Access-Control-Allow-Credentials  true;
-        add_header Access-Control-Allow-Origin https://news.futunn.com;
+        add_header Access-Control-Allow-Origin https://www.example.com;
     }
 
     
@@ -206,3 +162,4 @@ upstream webpack_dev_server {
 
 Done
 
+ 
