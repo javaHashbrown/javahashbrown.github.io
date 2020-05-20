@@ -57,7 +57,6 @@
 /static/9983387778f1c70c0ce32374522d12c6/76224/post-default-bg.jpg 4288w" src="/static/9983387778f1c70c0ce32374522d12c6/7a34f/post-default-bg.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="Post-module--grid--239xQ"><header class="Post-module--header--3bBWj"><h1 class="Post-module--title--7tlEK">手写Array.prototype.map</h1><p class="Post-module--date--1uCBT">May 20, 2020</p></header><hr/></section><section class="Post-module--grid--239xQ"><div class="Post-module--passage--1gLP0"><h3 id="前端知识复习-code-snippet" style="position:relative;"><a href="#%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0-code-snippet" aria-label="前端知识复习 code snippet permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>前端知识复习 code snippet</h3>
 <p>废话少说，先看标准</p>
 <blockquote>
-</blockquote>
 <ol>
 <li>Let O be ? ToObject(this value).</li>
 <li>Let len be ? LengthOfArrayLike(O).</li>
@@ -69,15 +68,20 @@
 <ul>
 <li>Let Pk be ! ToString(k).</li>
 <li>Let kPresent be ? HasProperty(O, Pk).</li>
-<li>If kPresent is true, then</li>
+<li>
+<p>If kPresent is true, then</p>
+<ul>
 <li>Let kValue be ? Get(O, Pk).</li>
 <li>Let mappedValue be ? Call(callbackfn, thisArg, « kValue, k, O »).</li>
 <li>Perform ? CreateDataPropertyOrThrow(A, Pk, mappedValue).</li>
 <li>Set k to k +1.</li>
 </ul>
 </li>
+</ul>
+</li>
 <li>Return A.</li>
 </ol>
+</blockquote>
 <h3 id="代码" style="position:relative;"><a href="#%E4%BB%A3%E7%A0%81" aria-label="代码 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>代码</h3>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myMap</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">callbackfn<span class="token punctuation">,</span> thisArg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// this cannot be null or undefined</span>
