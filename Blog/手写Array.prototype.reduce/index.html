@@ -64,9 +64,15 @@
 <li>If len is 0 and initialValue is not present, throw a TypeError exception.</li>
 <li>Let k be 0.</li>
 <li>Let accumulator be undefined.</li>
-<li>If initialValue is present, then</li>
+<li>
+<p>If initialValue is present, then</p>
+<ul>
 <li>Set accumulator to initialValue.</li>
-<li>Else,</li>
+</ul>
+</li>
+<li>
+<p>Else,</p>
+<ul>
 <li>Let kPresent be false.</li>
 <li>
 <p>Repeat, while kPresent is false and k &#x3C; len,</p>
@@ -75,11 +81,15 @@
 <li>Set kPresent to ? HasProperty(O, Pk).</li>
 <li>If kPresent is true, then</li>
 <li>Set accumulator to ? Get(O, Pk).</li>
-<li>Set k to k + 1.</li>
 </ul>
 </li>
+<li>Set k to k + 1.</li>
 <li>If kPresent is false, throw a TypeError exception.</li>
-<li>Repeat, while k &#x3C; len,</li>
+</ul>
+</li>
+<li>
+<p>Repeat, while k &#x3C; len,</p>
+<ul>
 <li>Let Pk be ! ToString(k).</li>
 <li>Let kPresent be ? HasProperty(O, Pk).</li>
 <li>
@@ -90,50 +100,50 @@
 </ul>
 </li>
 <li>Set k to k + 1.</li>
+</ul>
+</li>
 <li>Return accumulator.</li>
 </ol>
 </blockquote>
 <h3 id="代码" style="position:relative;"><a href="#%E4%BB%A3%E7%A0%81" aria-label="代码 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>代码</h3>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myReduce</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">callbackfn<span class="token punctuation">,</span> initialValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// this must not be null or undefined</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span>
-            <span class="token string">'Array.prototype.reduce called on null or undefined'</span>
-        <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// callbackfn must be a function</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> callbackfn <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span>callbackfn <span class="token operator">+</span> <span class="token string">' is not a function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myReduce</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">callbackfn<span class="token punctuation">,</span> initialValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// this must not be null or undefined</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Array.prototype.reduce called on null or undefined'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// callbackfn must be a function</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> callbackfn <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span>callbackfn <span class="token operator">+</span> <span class="token string">' is not a function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-    <span class="token keyword">var</span> <span class="token constant">O</span> <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> len <span class="token operator">=</span> <span class="token constant">O</span><span class="token punctuation">.</span>length <span class="token operator">>>></span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> <span class="token constant">O</span> <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> len <span class="token operator">=</span> <span class="token constant">O</span><span class="token punctuation">.</span>length <span class="token operator">>>></span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">var</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        accumulator <span class="token operator">=</span> initialValue<span class="token punctuation">;</span>
-    <span class="token comment">// get initialValue</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>accumulator <span class="token operator">==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token keyword">in</span> <span class="token constant">O</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                accumulator <span class="token operator">=</span> <span class="token constant">O</span><span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment">// end of iteration with no initialValue found, throw empty array error</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>k<span class="token operator">>=</span>len<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Reduce of empty array with no initial value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">// iterate array and merge results</span>
+  <span class="token keyword">var</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    accumulator <span class="token operator">=</span> initialValue<span class="token punctuation">;</span>
+  <span class="token comment">// get initialValue</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>accumulator <span class="token operator">==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token keyword">in</span> <span class="token constant">O</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">var</span> kValue <span class="token operator">=</span> <span class="token constant">O</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            accumulator <span class="token operator">=</span> <span class="token function">callbackfn</span><span class="token punctuation">(</span>accumulator<span class="token punctuation">,</span> kValue<span class="token punctuation">,</span> k<span class="token punctuation">,</span> <span class="token constant">O</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token keyword">in</span> <span class="token constant">O</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        accumulator <span class="token operator">=</span> <span class="token constant">O</span><span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> accumulator<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div></div><nav class="Post-module--nav--3gwJ9"><div class="Post-module--left--3WkxX"><a class="Post-module--button--39RuZ" href="/Blog/手写Array.prototype.map/"><span class="Post-module--prev--BHr9s">手写Array.prototype.map</span></a></div><div class="Post-module--right--1ERWj"><a class="Post-module--button--39RuZ" href="/Blog/Svelt初探/"><span class="Post-module--next--BnvP9">Svelt初探</span></a></div></nav></section></article></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+    <span class="token comment">// end of iteration with no initialValue found, throw empty array error</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">>=</span> len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Reduce of empty array with no initial value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// iterate array and merge results</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token keyword">in</span> <span class="token constant">O</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> kValue <span class="token operator">=</span> <span class="token constant">O</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      accumulator <span class="token operator">=</span> <span class="token function">callbackfn</span><span class="token punctuation">(</span>accumulator<span class="token punctuation">,</span> kValue<span class="token punctuation">,</span> k<span class="token punctuation">,</span> <span class="token constant">O</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> accumulator<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div></div><nav class="Post-module--nav--3gwJ9"><div class="Post-module--left--3WkxX"><a class="Post-module--button--39RuZ" href="/Blog/手写Array.prototype.map/"><span class="Post-module--prev--BHr9s">手写Array.prototype.map</span></a></div><div class="Post-module--right--1ERWj"></div></nav></section></article></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
   if(true) {
