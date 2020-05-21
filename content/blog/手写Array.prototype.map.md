@@ -5,7 +5,7 @@ date: '2020-05-20'
 
 ### 前端知识复习 code snippet
 
-废话少说，先看标准
+废话少说，先看[标准](https://tc39.es/ecma262/#sec-array.prototype.map)
 
 >1. Let O be ? ToObject(this value).
 >2. Let len be ? LengthOfArrayLike(O).
