@@ -1,7 +1,6 @@
 ---
 title: '使用eslint+prettier+husky规范项目代码风格'
 date: 2019-11-05
-
 ---
 
 ### 写在前面

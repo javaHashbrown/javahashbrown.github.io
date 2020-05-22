@@ -1,7 +1,6 @@
 ---
 title: '配置Nginx和WebpackDevServer支持开发环境热更新和https域名访问'
 date: '2020-01-07'
-
 ---
 
 开始之前，先推荐一个工具网站
