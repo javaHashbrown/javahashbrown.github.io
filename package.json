@@ -38,6 +38,8 @@
     "deploy": "gatsby build && gh-pages -d public -b master",
     "develop": "gatsby develop",
     "start": "npm run develop",
+    "view-dev": "npm run develop && npm run serve",
+    "view-build": "npm run build && npm run serve",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
