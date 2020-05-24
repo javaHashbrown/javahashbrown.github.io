@@ -15,27 +15,27 @@ date: '2020-05-21'
 > 6. Let accumulator be undefined.
 > 7. If initialValue is present, then
 >
->     - Set accumulator to initialValue.
+>    - Set accumulator to initialValue.
 >
 > 8. Else,
 >
->     - Let kPresent be false.
->     - Repeat, while kPresent is false and k < len,
+>    - Let kPresent be false.
+>    - Repeat, while kPresent is false and k < len,
 >       - Let Pk be ! ToString(k).
 >       - Set kPresent to ? HasProperty(O, Pk).
 >       - If kPresent is true, then
 >         - Set accumulator to ? Get(O, Pk).
->     - Set k to k + 1.
->     - If kPresent is false, throw a TypeError exception.
+>    - Set k to k + 1.
+>    - If kPresent is false, throw a TypeError exception.
 >
 > 9. Repeat, while k < len,
 >
->     - Let Pk be ! ToString(k).
->     - Let kPresent be ? HasProperty(O, Pk).
->     - If kPresent is true, then
+>    - Let Pk be ! ToString(k).
+>    - Let kPresent be ? HasProperty(O, Pk).
+>    - If kPresent is true, then
 >       - Let kValue be ? Get(O, Pk).
 >       - Set accumulator to ? Call(callbackfn, undefined, « accumulator, kValue, k, O »).
->     - Set k to k + 1.
+>    - Set k to k + 1.
 >
 > 10. Return accumulator.
 
@@ -58,17 +58,15 @@ Array.prototype.myReduce = function(callbackfn, initialValue) {
   var k = 0,
     accumulator = initialValue;
   // get initialValue
-  if (accumulator == undefined) {
+  find_initial: if (accumulator == undefined) {
     for (; k < len; k++) {
       if (k in O) {
         accumulator = O[k++];
-        break;
+        break find_initial;
       }
     }
     // end of iteration with no initialValue found, throw empty array error
-    if (k >= len) {
-      throw new TypeError('Reduce of empty array with no initial value');
-    }
+    throw new TypeError('myReduce of empty array with no initial value');
   }
 
   // iterate array and merge results
