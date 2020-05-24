@@ -5,16 +5,16 @@ date: '2020-05-23'
 
 ### 前端知识复习 code snippet
 
-[标准](https://tc39.es/ecma262/#sec-array.prototype.foreach)
+[array.prototype.foreach 标准](https://tc39.es/ecma262/#sec-array.prototype.foreach)
 
 >1. Let O be ? ToObject(this value).
 >2. Let len be ? LengthOfArrayLike(O).
 >3. If IsCallable(callbackfn) is false, throw a TypeError exception.
 >4. Let k be 0.
 >5. Repeat, while k < len,
->   - Let Pk be ! ToString(k).
->   - Let kPresent be ? HasProperty(O, Pk).
->   - If kPresent is true, then
+>    - Let Pk be ! ToString(k).
+>    - Let kPresent be ? HasProperty(O, Pk).
+>    - If kPresent is true, then
 >       - Let kValue be ? Get(O, Pk).
 >       - Perform ? Call(callbackfn, thisArg, « kValue, k, O »).
 >   - Set k to k + 1.
