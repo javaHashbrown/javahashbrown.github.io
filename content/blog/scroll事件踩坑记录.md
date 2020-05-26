@@ -12,4 +12,7 @@ date: '2020-05-25'
 #### 如何判断绑定正确还是错误
 #### 绑定document的处理
 #### 绑定页面元素的处理
+
+### 其他兼容性处理
+#### -webkit-overflow-scrolling: touch
 done
