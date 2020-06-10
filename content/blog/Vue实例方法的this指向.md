@@ -71,7 +71,7 @@ obj.b()
 - 在不清楚this指向问题的时候，没有用bind来绑定this
 
 结论
-- 只要不存在this shadowing的情况，直接传`this.[method]`就可以了
+- Vue实例方法中，只要不存在this shadowing的情况，直接传`this.[method]`就可以了
 - 不清楚this指向，`this.[method]`内部又使用了`this.xxx`需要确认this指向关系的，可以用bind方法绑定后再传入
 
 以上～
