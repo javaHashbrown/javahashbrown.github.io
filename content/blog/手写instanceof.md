@@ -30,7 +30,7 @@ function myInstanceof(left,right){
     if(!isFunction(right)){
         throw new Error('right-hand side of instanceof is not callable');
     }
-    if(isObject(left)) return false;
+    if(!isObject(left)) return false;
 
     var proto = Object.getPrototypeOf(left);
     if(!isObject(proto)){
