@@ -5,51 +5,68 @@ date: '2020-06-17'
 
 ### 前端知识复习 code snippet
 
-[instanceof 标准](https://tc39.es/ecma262/#sec-instanceofoperator)
+[Function.prototype.bind 标准](https://tc39.es/ecma262/#sec-function.prototype.bind)
 
 
->1. If Type(target) is not Object, throw a TypeError exception.
->2. Let instOfHandler be ? GetMethod(target, @@hasInstance).
->3. If instOfHandler is not undefined, then
->    - Return ! ToBoolean(? Call(instOfHandler, target, « V »)).
->4. If IsCallable(target) is false, throw a TypeError exception.
->5. Return ? OrdinaryHasInstance(target, V).
+> When the bind method is called with argument thisArg and zero or more args, it performs the following steps:
+>
+>1. Let Target be the this value.
+>2. If IsCallable(Target) is false, throw a TypeError exception.
+>3. Let F be ? BoundFunctionCreate(Target, thisArg, args).
+>4. Let L be 0.
+>5. Let targetHasLength be ? HasOwnProperty(Target, "length").
+>6. If targetHasLength is true, then
+>   a. Let targetLen be ? Get(Target, "length").
+>   b. If Type(targetLen) is Number, then  
+>       - If targetLen is +∞𝔽, set L to +∞.  
+>       - Else if targetLen is -∞𝔽, set L to 0.  
+>       - Else,  
+>          + Let targetLenAsInt be ! ToIntegerOrInfinity(targetLen).  
+>          + Assert: targetLenAsInt is finite.  
+>          + Let argCount be the number of elements in args.  
+>          + Set L to max(targetLenAsInt - argCount, 0).  
+>7. Perform ! SetFunctionLength(F, L).
+>8. Let targetName be ? Get(Target, "name").
+>9. If Type(targetName) is not String, set targetName to the empty String.
+>10. Perform SetFunctionName(F, targetName, "bound").
+>11. Return F.
 
 ### 代码
 
 ```javascript
 
-function myInstanceof(left,right){
-    if(!isObject(right)){
-        throw new Error('right-hand side of instanceof is not an object')
+function myBind(thisArg,...args){
+    var target = this;
+    if(!isCallable(target)){
+        throw new Type Error(target+'.bind is not a function')
     }
-    var instOfHandler = right[Symbol.hasInstance];
-    if(instOfHandler){
-        return Boolean(instOfHandler.call(right, left));
-    };
-    if(!isFunction(right)){
-        throw new Error('right-hand side of instanceof is not callable');
-    }
-    if(!isObject(left)) return false;
 
-    var proto = Object.getPrototypeOf(left);
-    if(!isObject(proto)){
-        throw new Error('prototype must be an object')
-    }
-    while(proto){
-        if(proto === right.prototype){
-            return true;
+    var bound = function () {};
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+
+        if (this instanceof bound) {
+            // constructor
+            var result = target.apply(this, args.concat(bindArgs));
+            if(Object(result)===result){
+                // constructor call returns a object
+                return result;
+            }
+            // returns an instance
+            return this;
+        } else {
+            // ordinary function call
+            return target.apply(thisArg, args.concat(bindArgs));
         }
-        proto = Object.getPrototypeOf(proto);
-    }
-    return false;
+    };
+    // keep prototype chain
+    bound.prototype = target.prototype;
+    fBound.prototype = new bound();
+    return fBound;
+    
 }
 
-function isFunction(obj){
+function isCallable(obj){
     return typeof obj === 'function';
-}
-
-function isObject(obj){
-    return obj !== null && typeof obj === 'object' || isFunction(obj);
 }
 ```
