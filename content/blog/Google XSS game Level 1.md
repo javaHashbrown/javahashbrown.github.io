@@ -3,7 +3,9 @@ title: 'Google XSS game - Level 1'
 date: '2020-11-18'
 ---
 
-Recently I've been reviewing Frontend basics and came across this XSS game made by Google Security Team, I believe. Although it was designed at least 4 yrs ago, I learned how to launch a XSS attack when playing the game. It took me almost 2 hrs to clear all 6 levels. 
+Recently I've been reviewing Frontend basics and came across this XSS game made by Google Security Team, I believe. 
+
+Although it was designed at least 4 yrs ago, I found it quite interesting and learned how to launch XSS attacks in various ways through the game. It took me almost 2 hrs to clear all 6 levels. 
 
 ### Level 1: Hello, world of XSS
 #### Mission Description
