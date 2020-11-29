@@ -1,5 +1,5 @@
 ---
-title: 'JavaScript加密URL'
+title: 'JavaScript编码URL'
 date: '2018-05-01'
 ---
 
