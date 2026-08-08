@@ -54,9 +54,12 @@ typings/
 # dotenv environment variables file
 .env
 
-# gatsby files
-.cache/
-public
+# VitePress build output
+.vitepress/dist/
+.vitepress/cache/
+
+# Auto-generated
+src/articles.json
 
 # Mac files
 .DS_Store

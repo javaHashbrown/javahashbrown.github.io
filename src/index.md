@@ -1,0 +1,25 @@
+---
+layout: home
+
+hero:
+  name: "Alex's Midway"
+  text: 个人技术博客
+  tagline: 记录前端开发、React Native、工程实践以及更多技术探索
+  actions:
+    - theme: brand
+      text: 浏览文章
+      link: /blog
+    - theme: alt
+      text: GitHub
+      link: https://github.com/javaHashbrown/javahashbrown.github.io
+
+features:
+  - title: React Native & 移动开发
+    details: RN 组件定制、Android/iOS 适配踩坑、移动端调试技巧
+  - title: JavaScript 深入
+    details: 原型链、隐式转换、手写实现、ES 规范与核心概念
+  - title: 工程实践
+    details: Nginx 配置、抓包调试、构建工具链、Node.js 部署
+  - title: Web 基础 & 算法
+    details: CSS 核心概念、HTTP 缓存、安全攻防、LeetCode 刷题记录
+---

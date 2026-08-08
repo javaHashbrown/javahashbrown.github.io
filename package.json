@@ -1,51 +1,21 @@
 {
-  "name": "gatsby-starter-midway",
+  "name": "hash_browns_blog",
   "description": "A simple personal blog starter with Gatsby",
   "version": "0.1.0",
-  "author": "javahashbrown",
-  "dependencies": {
-    "gatsby": "^2.21.1",
-    "gatsby-image": "^2.4.0",
-    "gatsby-plugin-catch-links": "^2.3.0",
-    "gatsby-plugin-google-analytics": "^2.3.0",
-    "gatsby-plugin-manifest": "^2.4.1",
-    "gatsby-plugin-nprogress": "^2.3.0",
-    "gatsby-plugin-offline": "^2.2.10",
-    "gatsby-plugin-react-helmet": "^3.3.0",
-    "gatsby-plugin-sharp": "^2.6.0",
-    "gatsby-remark-autolink-headers": "^2.3.0",
-    "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-images": "^3.3.0",
-    "gatsby-remark-katex": "^3.3.0",
-    "gatsby-remark-prismjs": "^3.5.0",
-    "gatsby-source-filesystem": "^2.3.0",
-    "gatsby-transformer-remark": "^2.8.0",
-    "gatsby-transformer-sharp": "^2.5.0",
-    "katex": "^0.10.2",
-    "prismjs": "^1.20.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
+  "author": "hash browns' blog",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "deploy": "gatsby build && gh-pages -d public -b master",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "view-dev": "npm run develop && npm run serve",
-    "view-build": "npm run build && npm run serve",
-    "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0",
-    "prettier": "^1.19.1"
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^18.13.0",
+    "gray-matter": "^4.0.3",
+    "vitepress": "^1.0.0-alpha.45",
+    "vue": "^3.2.47"
   },
   "repository": {
     "type": "git",
