@@ -14,7 +14,7 @@
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^18.13.0",
     "gray-matter": "^4.0.3",
-    "vitepress": "^1.0.0-alpha.45",
+    "vitepress": "^1.6.3",
     "vue": "^3.2.47"
   },
   "repository": {
