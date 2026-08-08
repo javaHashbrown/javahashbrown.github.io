@@ -12,7 +12,7 @@ date: '2018-03-08'
 
 ##### 解决方法：
 
-手动修改地址为http://localhost:8081/debugger-ui/ ，然后重新启动 app，就可以成功开始 debug 了
+手动修改地址为 `localhost:8081/debugger-ui/`，然后重新启动 app，就可以成功开始 debug 了
 
 ---
 
